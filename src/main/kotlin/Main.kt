@@ -1,10 +1,10 @@
 package org.example
 
-
 import java.io.File
+import java.text.Normalizer
 
 fun main() {
-    val pathDir = "C:\\Users\\Zzz\\Desktop\\PaliscannerJJG\\src\\main\\Ficheros"
+    val pathDir = "/home/juljimgar/PSP/PaliscannerJJG/src/main/Ficheros/"
     val dir = File(pathDir)
 
     if (!dir.isDirectory) {
@@ -25,7 +25,8 @@ fun main() {
     filePath.forEach { filePath ->
         println("Contenido de archivo: $filePath")
         val content = File(filePath).readText()
-        val words = content.split("\\s+".toRegex())
+        val normalizer = content.lowercase()
+        val words = normalizer.split("\\s+".toRegex())
 
         var foundPalindromes = false
         for (word in words) {
@@ -47,10 +48,3 @@ fun isPal(word: String): Boolean {
     }
     return true
 }
-
-
-
-
-
-
-
